@@ -1,4 +1,5 @@
 ﻿using BikeStore.Application.Interfaces;
+using BikeStore.Infrastructure.EntityFramework.Data;
 using BikeStore.Infrastructure.EntityFramework.Repositories.Sales;
 using BikeStore.WebApi.Models;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,7 @@ namespace BikeStore.Infrastructure.EntityFramework
                 (options => options.UseSqlServer(configuration.GetConnectionString("BikeStoreDb")));
 
             services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<DatabaseSeeding>();
 
             return services;
         }

@@ -13,11 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeStore.WebApi", "Presentation\BikeStore.WebApi\BikeStore.WebApi.csproj", "{49418CEE-785A-4951-9348-AFCE8104ABE2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeStore.Infrastructure.EntityFramework", "Infrastructure\BikeStore.EntityFramework\BikeStore.Infrastructure.EntityFramework.csproj", "{53332259-23D7-4AEA-97C4-6CA1BE881DAC}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeStore.Application", "Application\BikeStore.Application\BikeStore.Application.csproj", "{DA0212FC-07BF-40AA-9DA0-8C766DB657DB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeStore.Domain", "Domain\BikeStore.Domain\BikeStore.Domain.csproj", "{7161191C-4E80-4C33-B61A-625360DCBFFF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeStore.Persistence", "Infrastructure\BikeStore.Persistence\BikeStore.Persistence.csproj", "{936C29EB-C6F8-4A6C-B4B6-079AF302F8E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,6 @@ Global
 		{49418CEE-785A-4951-9348-AFCE8104ABE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49418CEE-785A-4951-9348-AFCE8104ABE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49418CEE-785A-4951-9348-AFCE8104ABE2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{53332259-23D7-4AEA-97C4-6CA1BE881DAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{53332259-23D7-4AEA-97C4-6CA1BE881DAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{53332259-23D7-4AEA-97C4-6CA1BE881DAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{53332259-23D7-4AEA-97C4-6CA1BE881DAC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DA0212FC-07BF-40AA-9DA0-8C766DB657DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DA0212FC-07BF-40AA-9DA0-8C766DB657DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA0212FC-07BF-40AA-9DA0-8C766DB657DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,15 +37,19 @@ Global
 		{7161191C-4E80-4C33-B61A-625360DCBFFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7161191C-4E80-4C33-B61A-625360DCBFFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7161191C-4E80-4C33-B61A-625360DCBFFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{936C29EB-C6F8-4A6C-B4B6-079AF302F8E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{936C29EB-C6F8-4A6C-B4B6-079AF302F8E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{936C29EB-C6F8-4A6C-B4B6-079AF302F8E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{936C29EB-C6F8-4A6C-B4B6-079AF302F8E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{49418CEE-785A-4951-9348-AFCE8104ABE2} = {9FF84CE0-EEB8-4BEC-9A75-84E59902DB51}
-		{53332259-23D7-4AEA-97C4-6CA1BE881DAC} = {6C9AF3E8-B13C-4D72-809F-AB2375588F49}
 		{DA0212FC-07BF-40AA-9DA0-8C766DB657DB} = {EC42861B-F9B0-44A9-9F14-E8F0E5F4D63E}
 		{7161191C-4E80-4C33-B61A-625360DCBFFF} = {85B2B8FE-E936-4B92-BC9A-F1AF468408BA}
+		{936C29EB-C6F8-4A6C-B4B6-079AF302F8E2} = {6C9AF3E8-B13C-4D72-809F-AB2375588F49}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61A79E5D-F6D8-4871-9411-AD9FD3D35771}

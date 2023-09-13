@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BikeStore.Controllers
 {
-    [Authorize]
+    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     [Route("[controller]")]
     public class OrderController : ControllerBase
@@ -52,10 +52,15 @@ namespace BikeStore.Controllers
 
             if(order != null && order.CustomerId.HasValue)
             {
-               await _authorizationService.AuthorizeAsync(User, order.CustomerId, "ViewCreateEditPolicyForCustomer");
+                var result = await _authorizationService.AuthorizeAsync(User, order.CustomerId, "ViewCreateEditPolicyForCustomer");
+
+                if (result.Succeeded)
+                {
+                    return order;
+                }
             }
 
-            return order;
+            return null;
         }
 
         [HttpPost]

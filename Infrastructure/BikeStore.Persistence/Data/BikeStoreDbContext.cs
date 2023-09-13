@@ -1,10 +1,12 @@
 ﻿using BikeStore.Domain.Entities.Production;
 using BikeStore.Domain.Entities.Sales;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using BikeStore.Infrastructure.EntityFramework.Identity;
 
 namespace BikeStore.WebApi.Models;
 
-public partial class BikeStoreDbContext : DbContext
+public partial class BikeStoreDbContext : IdentityDbContext<User, Role, string>
 {
     public BikeStoreDbContext(DbContextOptions<BikeStoreDbContext> options)
         : base(options)
@@ -282,6 +284,7 @@ public partial class BikeStoreDbContext : DbContext
         });
 
         OnModelCreatingPartial(modelBuilder);
+        base.OnModelCreating(modelBuilder);
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

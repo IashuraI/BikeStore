@@ -19,7 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Application\BikeStore.Application\BikeStore.Application.csproj" />
     <ProjectReference Include="..\..\Domain\BikeStore.Domain\BikeStore.Domain.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\BikeStore.EntityFramework\BikeStore.Infrastructure.EntityFramework.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\BikeStore.Persistence\BikeStore.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

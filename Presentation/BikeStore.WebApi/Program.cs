@@ -1,6 +1,8 @@
 using BikeStore.Infrastructure.EntityFramework;
+using BikeStore.Infrastructure.EntityFramework.Data;
+using BikeStore.Infrastructure.EntityFramework.Identity;
 using BikeStore.WebApi.Infra;
-using Microsoft.AspNetCore.Authentication.Cookies;
+using BikeStore.WebApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 
@@ -11,10 +13,33 @@ builder.Services.AddControllers()
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+    {
+        options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+        {
+            Name = "Authorization",
+            Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+            Scheme = "Bearer",
+            BearerFormat = "JWT",
+            In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+            Description = "JWT Authorization header using the Bearer scheme."
+        });
+        options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement {
+        {
+            new Microsoft.OpenApi.Models.OpenApiSecurityScheme {
+                    Reference = new Microsoft.OpenApi.Models.OpenApiReference {
+                        Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                    }
+                },
+                new string[] {}
+        }
+    });
+    }
+);
 
 builder.Services.AddInfrastructureEntityFramework(builder.Configuration);
-builder.Services.AddApplication();
+builder.Services.AddApplication(builder.Configuration);
 
 builder.Services.AddAuthorization(options =>
 {
@@ -26,7 +51,21 @@ builder.Services.AddAuthorization(options =>
     });
 });
 
-builder.Services.AddAuthentication().AddCookie();
+builder.Services.AddIdentity<User, Role>(
+        options => {
+            options.SignIn.RequireConfirmedAccount = false;
+        }
+        )
+    .AddEntityFrameworkStores<BikeStoreDbContext>();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    // Cookie settings
+    options.Cookie.HttpOnly = true;
+    //options.Cookie.Expiration 
+
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+});
 
 builder.Services.AddSingleton<IAuthorizationHandler, ResourceAuthorizationHandler>();
 builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
@@ -37,6 +76,11 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
+    using (var scope = app.Services.CreateScope())
+    {
+        await scope.ServiceProvider.GetRequiredService<DatabaseSeeding>().Seed();
+    }
+
     app.UseSwagger();
     app.UseSwaggerUI();
 }

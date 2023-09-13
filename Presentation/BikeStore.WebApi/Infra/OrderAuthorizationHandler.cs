@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using BikeStore.Domain.Constants;
+using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 
 namespace BikeStore.WebApi.Infra
@@ -14,9 +15,13 @@ namespace BikeStore.WebApi.Infra
 
             if (roleClaim != null && userId != null)
             {
-                if (roleClaim.Value == "stuff" || (roleClaim.Value == "customer" && int.Parse(userId.Value) == customerId))
+                if (roleClaim.Value == RoleConstants.StaffRoleName || (roleClaim.Value == RoleConstants.CustomerRoleName && int.Parse(userId.Value) == customerId))
                 {
                     context.Succeed(requirement);
+                }
+                else
+                {
+                    context.Fail();
                 }
             }
 
