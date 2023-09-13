@@ -1,5 +1,6 @@
 ﻿using BikeStore.Domain.Constants;
 using Microsoft.AspNetCore.Authorization;
+using System.Net;
 using System.Security.Claims;
 
 namespace BikeStore.WebApi.Infra
@@ -21,7 +22,7 @@ namespace BikeStore.WebApi.Infra
                 }
                 else
                 {
-                    context.Fail();
+                    throw new UnauthorizedAccessException("Access denied");
                 }
             }
 

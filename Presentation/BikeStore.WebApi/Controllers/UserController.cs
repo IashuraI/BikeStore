@@ -32,27 +32,24 @@ namespace BikeStore.WebApi.Controllers
         {
             var user = new User { Id = Guid.NewGuid().ToString(), UserName = username, Email = username, CustomerId = customerId };
 
-            if (customerId != null)
+            if (staffId != null)
             {
-                var result = await _userManager.CreateAsync(user, password);
+                IdentityResult staffResult = await _userManager.CreateAsync(user, password);
+
+                if (staffResult.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(user, RoleConstants.StaffRoleName);
+                }
+            }
+            else if (customerId != null)
+            {
+                IdentityResult result = await _userManager.CreateAsync(user, password);
 
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(user, RoleConstants.CustomerRoleName);
                 }
             }
-
-            //if (staffId != null)
-            //{
-            //    Staff? staff = await _staffRepository.GetAsync(staffId.Value);
-
-            //    var result = await _userManager.CreateSecurityTokenAsync(user);
-
-            //    if (staff != null)
-            //    {
-            //        await _userManager.AddToRoleAsync(user, RoleConstants.StaffRoleName);
-            //    }
-            //}
         }
 
         [HttpPost("CreateTokenForExistingUser")]

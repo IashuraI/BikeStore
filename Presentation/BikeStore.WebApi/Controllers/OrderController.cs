@@ -1,7 +1,10 @@
 using BikeStore.Application.Services;
+using BikeStore.Domain.Constants;
 using BikeStore.Domain.Entities.Sales;
+using BikeStore.Infrastructure.EntityFramework.Identity;
 using BikeStore.WebApi.Infra;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BikeStore.Controllers
@@ -13,12 +16,15 @@ namespace BikeStore.Controllers
     {
         private readonly OrderService _orderService;
         private readonly IAuthorizationService _authorizationService;
+        private readonly RoleManager<Role> _roleManager;
         private readonly UserClaimsService _userClaimsService;
 
-        public OrderController(OrderService orderService, IAuthorizationService authorizationService, UserClaimsService userClaimsService)
+        public OrderController(OrderService orderService, IAuthorizationService authorizationService, RoleManager<Role> roleManager, 
+            UserClaimsService userClaimsService)
         {
             _orderService = orderService;
             _authorizationService = authorizationService;
+            _roleManager = roleManager;
             _userClaimsService = userClaimsService;
         }
 
@@ -26,7 +32,7 @@ namespace BikeStore.Controllers
         public async Task<List<Order>> Get(int pageSize = 1, int pageNumber = 1, int? customerId = null)
         {
             
-            if(!_userClaimsService.IsUserStaff())
+            if(!User.IsInRole(RoleConstants.StaffRoleName))
             {
                 if(customerId != null)
                 {
@@ -52,15 +58,10 @@ namespace BikeStore.Controllers
 
             if(order != null && order.CustomerId.HasValue)
             {
-                var result = await _authorizationService.AuthorizeAsync(User, order.CustomerId, "ViewCreateEditPolicyForCustomer");
-
-                if (result.Succeeded)
-                {
-                    return order;
-                }
+                await _authorizationService.AuthorizeAsync(User, order.CustomerId, "ViewCreateEditPolicyForCustomer");
             }
 
-            return null;
+            return order;
         }
 
         [HttpPost]
@@ -74,7 +75,7 @@ namespace BikeStore.Controllers
             return await _orderService.CreateAsync(order);
         }
 
-        [HttpPut]
+        [HttpPut("Cancel")]
         public async Task<int> Cancel(int orderId)
         {
             Order? order = await _orderService.GetAsyncById(orderId);
