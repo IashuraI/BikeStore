@@ -16,15 +16,13 @@ namespace BikeStore.Controllers
     {
         private readonly OrderService _orderService;
         private readonly IAuthorizationService _authorizationService;
-        private readonly RoleManager<Role> _roleManager;
         private readonly UserClaimsService _userClaimsService;
 
-        public OrderController(OrderService orderService, IAuthorizationService authorizationService, RoleManager<Role> roleManager, 
+        public OrderController(OrderService orderService, IAuthorizationService authorizationService,
             UserClaimsService userClaimsService)
         {
             _orderService = orderService;
             _authorizationService = authorizationService;
-            _roleManager = roleManager;
             _userClaimsService = userClaimsService;
         }
 

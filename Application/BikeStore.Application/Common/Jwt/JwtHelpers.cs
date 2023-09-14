@@ -6,7 +6,7 @@ namespace BikeStore.Application.Common.Jwt
 {
     public static class JwtHelpers
     {
-        public static JwtSecurityToken GenTokenkey(IEnumerable<Claim> claims, JwtSettings jwtSettings)
+        public static JwtSecurityToken GenerateAccessToken(IEnumerable<Claim> claims, JwtSettings jwtSettings)
         {
             try
             {

@@ -1,6 +1,6 @@
 ﻿using BikeStore.Application.Interfaces;
 using BikeStore.Domain.Entities.Sales;
-using BikeStore.WebApi.Models;
+using BikeStore.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 

@@ -1,7 +1,7 @@
 ﻿using BikeStore.Application.Interfaces;
 using BikeStore.Infrastructure.EntityFramework.Data;
 using BikeStore.Infrastructure.EntityFramework.Repositories.Sales;
-using BikeStore.WebApi.Models;
+using BikeStore.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

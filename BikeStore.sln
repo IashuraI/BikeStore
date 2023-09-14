@@ -19,6 +19,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeStore.Domain", "Domain\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeStore.Persistence", "Infrastructure\BikeStore.Persistence\BikeStore.Persistence.csproj", "{936C29EB-C6F8-4A6C-B4B6-079AF302F8E2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{362739F8-663F-44E1-9F68-3784A93D0717}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeStore.Application.Tests", "Tests\BikeStore.Application.Tests\BikeStore.Application.Tests.csproj", "{A42EC5FC-6446-4C3D-93C2-00C8A3F9137E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +45,10 @@ Global
 		{936C29EB-C6F8-4A6C-B4B6-079AF302F8E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{936C29EB-C6F8-4A6C-B4B6-079AF302F8E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{936C29EB-C6F8-4A6C-B4B6-079AF302F8E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A42EC5FC-6446-4C3D-93C2-00C8A3F9137E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A42EC5FC-6446-4C3D-93C2-00C8A3F9137E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A42EC5FC-6446-4C3D-93C2-00C8A3F9137E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A42EC5FC-6446-4C3D-93C2-00C8A3F9137E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +58,7 @@ Global
 		{DA0212FC-07BF-40AA-9DA0-8C766DB657DB} = {EC42861B-F9B0-44A9-9F14-E8F0E5F4D63E}
 		{7161191C-4E80-4C33-B61A-625360DCBFFF} = {85B2B8FE-E936-4B92-BC9A-F1AF468408BA}
 		{936C29EB-C6F8-4A6C-B4B6-079AF302F8E2} = {6C9AF3E8-B13C-4D72-809F-AB2375588F49}
+		{A42EC5FC-6446-4C3D-93C2-00C8A3F9137E} = {362739F8-663F-44E1-9F68-3784A93D0717}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61A79E5D-F6D8-4871-9411-AD9FD3D35771}

@@ -1,6 +1,6 @@
 ﻿using BikeStore.Domain.Constants;
 using BikeStore.Infrastructure.EntityFramework.Identity;
-using BikeStore.WebApi.Models;
+using BikeStore.Persistence.Data;
 using Microsoft.AspNetCore.Identity;
 
 namespace BikeStore.Infrastructure.EntityFramework.Data

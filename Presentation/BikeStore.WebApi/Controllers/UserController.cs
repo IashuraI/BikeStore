@@ -77,7 +77,7 @@ namespace BikeStore.WebApi.Controllers
                     authClaims.Add(new Claim(ClaimTypes.Role, userRole));
                 }
 
-                SecurityToken token = JwtHelpers.GenTokenkey(authClaims, _jwtSettings);
+                SecurityToken token = JwtHelpers.GenerateAccessToken(authClaims, _jwtSettings);
 
                 return new JwtSecurityTokenHandler().WriteToken(token);
             }

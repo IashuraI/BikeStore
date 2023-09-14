@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using BikeStore.Infrastructure.EntityFramework.Identity;
 
-namespace BikeStore.WebApi.Models;
+namespace BikeStore.Persistence.Data;
 
 public partial class BikeStoreDbContext : IdentityDbContext<User, Role, string>
 {

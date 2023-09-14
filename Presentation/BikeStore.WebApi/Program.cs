@@ -1,8 +1,8 @@
 using BikeStore.Infrastructure.EntityFramework;
 using BikeStore.Infrastructure.EntityFramework.Data;
 using BikeStore.Infrastructure.EntityFramework.Identity;
+using BikeStore.Persistence.Data;
 using BikeStore.WebApi.Infra;
-using BikeStore.WebApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 

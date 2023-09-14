@@ -1,5 +1,5 @@
 ﻿using BikeStore.Domain.Interfaces;
-using BikeStore.WebApi.Models;
+using BikeStore.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
