@@ -10,7 +10,7 @@ namespace BikeStore.Application.Tests.Services
     public class Tests
     {
         [Test]
-        public async Task CreateAsync_Order_ReturnsCreatedOrder()
+        public async Task CreateAsync_NewOrder_ReturnsCreatedOrder()
         {
             //Arrange
             Order createdOrder = new() {
@@ -35,7 +35,7 @@ namespace BikeStore.Application.Tests.Services
         }
 
         [Test]
-        public async Task CancelAsync_Order_CancelsOrder()
+        public async Task CancelAsync_ExistingOrder_CancelsOrder()
         {
             //Arrange
             Order order = new()
@@ -83,6 +83,8 @@ namespace BikeStore.Application.Tests.Services
             // Assert
             Assert.That(cancelledOrderId, Is.EqualTo(0));
         }
+
+        //to do - finish tests part for pagination
 
         //[Test]
         //public void GetWithPaginationAsync_TenElementsPageOne_ReturnsTenElementsFromPageOne()
